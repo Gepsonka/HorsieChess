@@ -3,15 +3,21 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId><!-- TODO: the groupId of your project (e.g., hu.unideb.inf) --></groupId>
-    <artifactId><!-- TODO: the artifactId of your project --></artifactId>
+    <groupId>hu.unideb.inf</groupId>
+    <artifactId>Horsie Chess</artifactId>
     <version>1.0</version>
-    <description><!-- TODO: a short description of your project --></description>
+    <description>
+        Game played on an normal chess board with 2 horses.
+        The rules are the following:
+            - A horse cannot step to aplace where one of the horses has already been.
+            - If a player is out of moves he is lost.
+            - Horse step pattern is the same as in normal chess.
+    </description>
     <developers>
         <developer>
-            <id><!-- TODO: your ID --></id>
-            <name><!-- TODO: your name --></name>
-            <email><!-- TODO: your email address --></email>
+            <id>Gepsonka</id>
+            <name>Botond Molnar</name>
+            <email>molnarbotond.eagle@gmail.com</email>
             <organization>Faculty of Informatics, University of Debrecen</organization>
             <organizationUrl>https://www.inf.unideb.hu/</organizationUrl>
         </developer>
