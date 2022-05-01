@@ -21,8 +21,20 @@ public class Position {
     }
 
     @Override
+    public String toString(){
+        return "[x: " + getX() + ", y: " + getY() + "]";
+    }
+    @Override
     public boolean equals(Object o){
-        // TODO: continue
+        if (!(o instanceof Position)){
+            return false;
+        }
+
+        if (o == this){
+            return true;
+        }
+
+        return ((Position) o).getX() == getX() && ((Position) o).getY() == getY();
     }
 
     public int getX(){

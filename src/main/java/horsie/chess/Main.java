@@ -1,3 +1,5 @@
+package horsie.chess;
+
 import horsie.chess.HorsieChessApplication;
 import horsie.chess.controller.*;
 

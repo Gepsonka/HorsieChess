@@ -11,5 +11,5 @@
 }
 
 .square:hover {
-    -fx-background-color: ghostwhite;
+    -fx-border-color: red;
 }

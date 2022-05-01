@@ -1,7 +1,7 @@
 package horsie.chess.model;
 
 
-/*
+/**
 * These enums will represent a state on the board
  */
 public enum SquareState {

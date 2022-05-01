@@ -8,8 +8,15 @@ import horsie.chess.model.SquareState;
 import javafx.geometry.Pos;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.MethodSource;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.ArrayList;
+import java.util.Objects;
+import java.util.Scanner;
 import java.util.stream.Stream;
 
 
@@ -25,6 +32,42 @@ public class HorsieChessBackendTest {
 
     private Stream<Position> positionProvider(){
         return Stream.of(new Position(), new Position(2, 5), new Position(1, 7));
+    }
+
+    private Stream<SquareState[][]> boardSupplier() throws FileNotFoundException {
+        ArrayList<SquareState[][]> boards = new ArrayList<>();
+
+        ClassLoader classLoader = getClass().getClassLoader();
+        for (int i = 1; i <= 3; i++){
+            // all board files include a state where black loses
+            String resourceName = "board" + i + ".txt";
+            File boardFile = new File(Objects.requireNonNull(classLoader.getResource(resourceName)).getFile());
+            SquareState[][] board = new SquareState[8][8];
+            Scanner scanner = new Scanner(boardFile);
+            int lineNum=0;
+            while (scanner.hasNext()){
+                String line = scanner.nextLine();
+                for (int s = 0; s < line.length(); s++){
+                    switch (line.charAt(s)){
+                        case '0':
+                            board[lineNum][s]=SquareState.EMPTY;
+                            break;
+                        case 'W':
+                            board[lineNum][s]=SquareState.WHITE_HORSE;
+                            break;
+                        case 'B':
+                            board[lineNum][s]=SquareState.BLACK_HORSE;
+                            break;
+                        case 'X':
+                            board[lineNum][s]=SquareState.FORBIDDEN;
+                            break;
+                    }
+                }
+                lineNum++;
+            }
+            boards.add(board.clone());
+        }
+        return boards.stream();
     }
 
     @Test
@@ -104,6 +147,40 @@ public class HorsieChessBackendTest {
         Assertions.assertTrue(result);
 
     }
+
+    @Test
+    public void testMovePieceGivenWhiteTurnsFromStartingPosition(){
+        // GIVEN
+        Position poz = new Position(1,5);
+
+        // WHEN
+        Position result = underTest.movePiece(poz);
+
+        // THEN
+        Assertions.assertEquals(poz, result);
+        Assertions.assertEquals(underTest.getCurrentPlayer(), PlayerTurn.BLACK);
+        Assertions.assertEquals(underTest.getWhitePosition(), poz);
+    }
+
+
+    @ParameterizedTest
+    @MethodSource("boardSupplier")
+    public void testCheckPlayerLostGivenABoard(SquareState[][] board){
+        // GIVEN
+        // test starts with white steps one
+        var game = new HorsieGameModel(board, PlayerTurn.WHITE);
+
+        // WHEN
+        // white always moves to that square
+        // in this test
+        game.movePiece(new Position(1,5));
+
+        // THEN
+        Assertions.assertEquals(PlayerTurn.WHITE, game.getPlayerWon() );
+
+    }
+
+
 
 
 }
