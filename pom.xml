@@ -75,6 +75,11 @@
             <version>RELEASE</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>4.2.2</version>
+        </dependency>
     </dependencies>
     <build>
         <plugins>

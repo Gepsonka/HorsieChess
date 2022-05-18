@@ -1,25 +1,24 @@
 package horsie.chess.controller;
 
 
-import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.util.ArrayList;
-import java.util.List;
 
 import horsie.chess.model.HorsieGameModel;
 import horsie.chess.model.PlayerTurn;
 import horsie.chess.model.Position;
 import horsie.chess.model.SquareState;
-import javafx.beans.value.ObservableValue;
 import javafx.fxml.FXML;
-import javafx.geometry.Insets;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.image.Image;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.*;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Circle;
 
+import javafx.stage.Stage;
 import org.tinylog.Logger;
 
 
@@ -42,14 +41,9 @@ public class HorsieGameController {
     private void initialize() throws FileNotFoundException {
         createBoard();
         placePieces();
-//        setSelectablePositions();
-//        showSelectablePositions();
         Logger.debug("Board initialised");
     }
 
-    /**
-     * Filling the GridPane up with squares
-     */
     private void createBoard() {
         for (int i = 0; i < board.getRowCount(); i++) {
             for (int j = 0; j < board.getColumnCount(); j++) {
@@ -58,23 +52,6 @@ public class HorsieGameController {
             }
         }
 
-    }
-
-    /**
-     *
-     * @return Square on the board
-     */
-    private StackPane createSquare() {
-        var square = new StackPane();
-        square.getStyleClass().add("square");
-        square.setOnMouseClicked((event) -> {
-            try {
-                handleMouseClick(event);
-            } catch (FileNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-        });
-        return square;
     }
 
 
@@ -143,12 +120,14 @@ public class HorsieGameController {
                     Logger.debug("Valid moves: {}", gameModel.validMovesOfPiece(position).toString());
                 }
             }
-            case EMPTY -> {
+            case EMPTY, FORBIDDEN -> {
                 if (showValidMoves){
                     if (gameModel.isValidMove(position)){
                         undisplayValidMovesVisibility();
                         stepWithPiece(position);
-                        checkIfGameHasFinished();
+                        if (gameIsFinished()){
+                            switchToGameOverScene();
+                        }
                     } else {
                         undisplayValidMovesVisibility();
                     }
@@ -156,6 +135,7 @@ public class HorsieGameController {
             }
         }
     }
+
 
     private void stepWithPiece(Position moveToPosition) throws FileNotFoundException {
         if (gameModel.isValidMove(moveToPosition)){
@@ -204,11 +184,11 @@ public class HorsieGameController {
         }
     }
 
-    private boolean checkIfGameHasFinished(){
 
-    }
-
-
+    /*
+     Displays valid moves by painting the valid
+     squares grey.
+     */
     private void displayValidMovesVisibility(){
         showValidMoves = true;
         ArrayList<Position> validPositions = new ArrayList<>();
@@ -225,6 +205,7 @@ public class HorsieGameController {
         Logger.info("Valid moves disappeared");
     }
 
+
     private void undisplayValidMovesVisibility(){
         showValidMoves = false;
         for (int i = 0; i < 8; i++){
@@ -235,33 +216,27 @@ public class HorsieGameController {
         }
     }
 
-    /**
-     * Returns the requested javafx Image
-     * @param imgType determines what kind of image will be returned
-     * @return javafx Image object
-     * @throws FileNotFoundException the image is not found in the resources dir
-     * @throws RuntimeException SquareState.EMPTY has no attached image
-     */
+
     private Image getPieceImages(SquareState imgType) throws FileNotFoundException, RuntimeException {
         try{
             switch (imgType){
                 case BLACK_HORSE -> {
                     FileInputStream fileStream = new FileInputStream(getClass().getClassLoader().
-                            getResource("black_horsie.png").getFile().toString());
+                            getResource("media/black_horsie.png").getFile().toString());
 
                     return new Image(fileStream, 70, 70, false, false);
                 }
 
                 case WHITE_HORSE -> {
                     FileInputStream fileStream = new FileInputStream(getClass().getClassLoader().
-                            getResource("white_horsie.png").getFile().toString());
+                            getResource("media/white_horsie.png").getFile().toString());
 
                     return new Image(fileStream, 70, 70, false, false);
                 }
 
                 case FORBIDDEN -> {
                     FileInputStream fileStream = new FileInputStream(getClass().getClassLoader().
-                            getResource("XX.png").getFile().toString());
+                            getResource("media/XX.png").getFile().toString());
 
                     return new Image(fileStream, 70, 70, false, false);
                 }
@@ -278,12 +253,40 @@ public class HorsieGameController {
         }
     }
 
-    /**
-     * Returns the square at the given position
-     * @param position coordinates of the square
-     *                wrapped in a Position obj
-     * @return the square object
+
+
+    /*
+     From the game over scene the player can start a new game
+     or exit the app.
      */
+    private void switchToGameOverScene(){
+        Stage gameStage = (Stage) getSquare(new Position(0,0)).getScene().getWindow();
+        Parent root = null;
+        try {
+            root = FXMLLoader.load(getClass().getResource("/javafx/playerWon.fxml"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        gameStage.setScene(new Scene(root));
+        gameStage.setResizable(false);
+        gameStage.setTitle("Game Over");
+        gameStage.show();
+
+    }
+
+    private StackPane createSquare() {
+        var square = new StackPane();
+        square.getStyleClass().add("square");
+        square.setOnMouseClicked((event) -> {
+            try {
+                handleMouseClick(event);
+            } catch (FileNotFoundException e) {
+                throw new RuntimeException(e);
+            }
+        });
+        return square;
+    }
+
     private StackPane getSquare(Position position) {
         for (var child : board.getChildren()) {
             if (GridPane.getRowIndex(child) == position.getX() && GridPane.getColumnIndex(child) == position.getY()) {
@@ -293,7 +296,13 @@ public class HorsieGameController {
         throw new AssertionError();
     }
 
+    private boolean gameIsFinished(){
+        if (gameModel.getPlayerWon() == PlayerTurn.NONE_OF_THEM){
+            return false;
+        }
 
+        return true;
+    }
 
 
 }

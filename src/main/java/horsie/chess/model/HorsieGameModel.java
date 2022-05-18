@@ -1,5 +1,7 @@
 package horsie.chess.model;
 
+import horsie.chess.data.HorsieChessCacheData;
+import horsie.chess.data.HorsieChessScoreboardData;
 import horsie.chess.model.SquareState;
 import horsie.chess.model.PlayerTurn;
 import horsie.chess.model.Position;
@@ -12,18 +14,22 @@ import java.util.Optional;
 
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
+import redis.clients.jedis.Jedis;
 
 import javax.xml.transform.Result;
 
 
 public class HorsieGameModel {
+
+    private final HorsieChessCacheData cache = new HorsieChessCacheData();
+    private final HorsieChessScoreboardData scoreboard = new HorsieChessScoreboardData();
     private SquareState[][] board = new SquareState[8][8];
 
     private PlayerTurn currentPlayer = PlayerTurn.NONE_OF_THEM;
 
     private PlayerTurn playerWon = PlayerTurn.NONE_OF_THEM;
-    private Position whitePosition = new Position();
-    private Position blackPosition = new Position();
+    private final Position whitePosition = new Position();
+    private final Position blackPosition = new Position();
 
 
     /**
@@ -137,12 +143,11 @@ public class HorsieGameModel {
      * Moving one of the pieces on the backend
      * @param positionToMovePiece position, where to move the piece
      * @return If the move was successful returns the place
-     * where the piece was moved
+     * where the piece was moved to.
      * @throws RuntimeException If one of the player has already won.
      * @throws RuntimeException If the game has not strated yet.
      * @throws RuntimeException Not valid move was tried .
      */
-    @Nullable
     public Position movePiece(Position positionToMovePiece) throws RuntimeException{
         if (playerWon != PlayerTurn.NONE_OF_THEM){
             throw new RuntimeException("One of the player has already won, neither of them can move.");
@@ -189,15 +194,24 @@ public class HorsieGameModel {
             case WHITE: // check if white lost
                 if (validMovesOfPiece(whitePosition).isEmpty()){
                     playerWon = PlayerTurn.BLACK;
+                    scoreboard.incrementPlayerScore(cache.getBlackPlayerName());
+                    cache.setPlayerWon(PlayerTurn.BLACK);
+
                     Logger.info("Black horse won");
                 }
                 break;
-            case BLACK:
+            case BLACK: // check if black lost
                 if (validMovesOfPiece(blackPosition).isEmpty()){
                     playerWon = PlayerTurn.WHITE;
+                    scoreboard.incrementPlayerScore(cache.getWhitePlayerName());
+                    cache.setPlayerWon(PlayerTurn.WHITE);
                     Logger.info("White horse won");
                 }
+                break;
         }
+
+
+
     }
 
 
@@ -238,12 +252,16 @@ public class HorsieGameModel {
                 continue;
             }
 
-            if (board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY() + moveDirections[i][1]]
+            if (board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
+                    + moveDirections[i][1]]
                     != SquareState.BLACK_HORSE
-                    && board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY() + moveDirections[i][1]]
+                    && board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
+                    + moveDirections[i][1]]
                     != SquareState.WHITE_HORSE
-                    && board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY() + moveDirections[i][1]]
-                    != SquareState.FORBIDDEN) {
+                    && board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
+                    + moveDirections[i][1]]
+                    != SquareState.FORBIDDEN)
+            {
                 validMovesPositions.add(new Position(moveDirections[i][0] + currentPositionOfPiece.getX(),
                         moveDirections[i][1] + currentPositionOfPiece.getY()));
             }
@@ -252,13 +270,7 @@ public class HorsieGameModel {
         return validMovesPositions;
     }
 
-    /**
-     *
-     * @param x row
-     * @param y column
-     * @return bool if the indexes point to
-     * a square which is on the board
-     */
+
     private boolean areIndexesOnTheTable(int x, int y){
         if (x < 0 || x >= 8 || y < 0 || y >= 8){
             return false;

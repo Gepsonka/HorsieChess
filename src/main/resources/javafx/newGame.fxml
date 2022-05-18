@@ -9,10 +9,10 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<GridPane alignment="TOP_CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1">
+<GridPane alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="horsie.chess.controller.NewGameController">
   <columnConstraints>
     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+    <ColumnConstraints halignment="CENTER" hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
   </columnConstraints>
   <rowConstraints>
     <RowConstraints maxHeight="279.0" minHeight="10.0" prefHeight="169.0" vgrow="SOMETIMES" />
@@ -20,36 +20,36 @@
       <RowConstraints maxHeight="253.0" minHeight="10.0" prefHeight="153.0" vgrow="SOMETIMES" />
   </rowConstraints>
    <children>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 1" textAlignment="CENTER" wrappingWidth="300.498046875">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="White side" textAlignment="CENTER" wrappingWidth="300.498046875">
          <font>
             <Font size="50.0" />
          </font>
       </Text>
-      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Player 2" textAlignment="CENTER" wrappingWidth="300.498046875" GridPane.columnIndex="1">
+      <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Black side" textAlignment="CENTER" wrappingWidth="300.498046875" GridPane.columnIndex="1">
          <font>
             <Font size="50.0" />
          </font>
       </Text>
-      <Button mnemonicParsing="false" prefHeight="24.0" prefWidth="189.0" text="Play" translateX="50.0" GridPane.rowIndex="2">
+      <Button fx:id="startGameButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="24.0" prefWidth="189.0" text="Play" translateX="50.0" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <Button mnemonicParsing="false" text="Exit" textAlignment="CENTER" translateX="120.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
+      <TextField fx:id="whitePlayerNameTextField" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="20.0" right="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <TextField fx:id="blackPlayerNameTextField" GridPane.columnIndex="1" GridPane.rowIndex="1">
+         <GridPane.margin>
+            <Insets left="20.0" right="20.0" />
+         </GridPane.margin>
+      </TextField>
+      <Button fx:id="scoreBoardButton" alignment="CENTER" contentDisplay="RIGHT" mnemonicParsing="false" prefHeight="24.0" prefWidth="189.0" text="Scoreboard" GridPane.columnIndex="1" GridPane.rowIndex="2">
          <font>
             <Font size="18.0" />
          </font>
       </Button>
-      <TextField GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
-      <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
-         <GridPane.margin>
-            <Insets left="20.0" right="20.0" />
-         </GridPane.margin>
-      </TextField>
    </children>
    <padding>
       <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
