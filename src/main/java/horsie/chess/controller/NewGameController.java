@@ -9,6 +9,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -47,6 +48,11 @@ public class NewGameController {
             return;
         }
 
+        if (whitePlayerNameTextField.getText().equals(blackPlayerNameTextField.getText())){
+            playerNamesAreTheSame();
+            return;
+        }
+
         // setting the credentials on the cache backends
         cache.setPlayerNames(whitePlayerNameTextField.getText(), blackPlayerNameTextField.getText());
         cache.setPlayerWon(PlayerTurn.NONE_OF_THEM);
@@ -58,6 +64,8 @@ public class NewGameController {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+        gameStage.getIcons().add(new Image(getClass().getClassLoader().getResource("media/white_horsie.png")
+                .toString()));
         gameStage.setScene(new Scene(root));
         gameStage.setResizable(false);
         gameStage.setTitle("Game");
@@ -70,6 +78,8 @@ public class NewGameController {
         try {
             root = FXMLLoader.load(getClass().getResource("/javafx/scoreboard.fxml"));
             Stage stage = new Stage();
+            stage.getIcons().add(new Image(getClass().getClassLoader().getResource("media/white_horsie.png")
+                    .toString()));
             stage.setTitle("Scoreboard");
             stage.setScene(new Scene(root));
             stage.setResizable(false);
@@ -85,6 +95,14 @@ public class NewGameController {
         alert.setTitle("Error");
         alert.setHeaderText("No player name!");
         alert.setContentText("Both players must have a name!");
+        alert.showAndWait();
+    }
+
+    private void playerNamesAreTheSame(){
+        Alert alert = new Alert(Alert.AlertType.ERROR);
+        alert.setTitle("Error");
+        alert.setHeaderText("Player name");
+        alert.setContentText("Player names must not be the same");
         alert.showAndWait();
     }
 }

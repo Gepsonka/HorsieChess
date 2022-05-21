@@ -1,18 +1,18 @@
 [
   {
     "playerName": "helo",
+    "playerScore" : 100
+  },
+  {
+    "playerName": "gepsonka",
+    "playerScore" : 50
+  },
+  {
+    "playerName": "skookie",
     "playerScore" : 12
   },
   {
-    "playerName": "csocs",
-    "playerScore" : 20
-  },
-  {
-  "playerName": "gewpsonka",
-  "playerScore" : 120
-  },
-  {
-  "playerName": "szija",
-  "playerScore" : 1
+    "playerName": "rio",
+    "playerScore" : 22
   }
 ]

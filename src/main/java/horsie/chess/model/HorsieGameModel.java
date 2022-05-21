@@ -200,7 +200,6 @@ public class HorsieGameModel {
                     playerWon = PlayerTurn.BLACK;
                     scoreboard.incrementPlayerScore(cache.getPlayer2());
                     cache.setPlayerWon(PlayerTurn.BLACK);
-
                     Logger.info("Black horse won");
                 }
                 break;

@@ -1,6 +1,6 @@
-2022-05-21 03:56:09 [JavaFX Application Thread] horsie.chess.data.HorsieChessCacheData.readFile()
-INFO: Cache initialized: [szniasz, csokihuszar] 
-2022-05-21 03:56:13 [JavaFX Application Thread] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-21 15:28:38 [JavaFX Application Thread] horsie.chess.data.HorsieChessCacheData.readFile()
+INFO: Cache initialized: [nyami, bbb] 
+2022-05-21 15:28:41 [JavaFX Application Thread] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-21 03:56:13 [JavaFX Application Thread] horsie.chess.controller.ScoreBoardController.initialize()
-DEBUG: Content of sorted json: [PlayerScore: name: szija, score: 1, PlayerScore: name: helo, score: 12, PlayerScore: name: csocs, score: 20, PlayerScore: name: gewpsonka, score: 120]
+2022-05-21 15:28:41 [JavaFX Application Thread] horsie.chess.controller.ScoreBoardController.initialize()
+DEBUG: Content of sorted json: [PlayerScore: name: helo, score: 100, PlayerScore: name: gepsonka, score: 52, PlayerScore: name: rio, score: 23, PlayerScore: name: skookie, score: 12, PlayerScore: name: x, score: 3, PlayerScore: name: bbb, score: 2, PlayerScore: name: nyami, score: 1]

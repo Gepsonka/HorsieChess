@@ -5,8 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerScore implements Comparable<PlayerScore>{
-    public String playerName;
-    public int playerScore;
+    private String playerName;
+    private int playerScore;
 
 
     public PlayerScore(String playerName, int playerScore){
@@ -16,7 +16,7 @@ public class PlayerScore implements Comparable<PlayerScore>{
 
 
     /**
-     * Must be implemented bc we would like to compare these objects to sort them and
+     * Must be implemented bc we would like to compare these objects to sort and
      * create scoreboard.
      * @param playerScore
      * @return
@@ -42,25 +42,15 @@ public class PlayerScore implements Comparable<PlayerScore>{
         return playerName;
     }
 
-    public void setPlayerName(String name){
+    public void setPlayerName(String name) {
         playerName = name;
     }
 
-    public String playerNameProperty() {
-        return playerName;
+    public void setPlayerScore(int playerScore) {
+        this.playerScore = playerScore;
     }
 
     public int getPlayerScore() {
         return playerScore;
     }
-
-    public void setPlayerScore(Integer score){
-        playerScore = score;
-    }
-
-    public int playerScoreProperty() {
-        return playerScore;
-    }
-
-
 }

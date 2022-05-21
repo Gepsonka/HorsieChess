@@ -30,10 +30,21 @@ public final class HorsieChessScoreboardData {
     }
 
 
+    public List<PlayerScore> getSortedScoreboard(){
+        sortAndReverseScoreboard();
+        return scoreboard;
+    }
+
+    /**
+     * If the player is already has a score increment that score
+     * else add the player to the scoreboard with the value of 1
+     * @param name The player's name
+     */
     public void incrementPlayerScore(String name){
         for (var i: scoreboard){
             if (i.getPlayerName().equals(name)) {
                 i.setPlayerScore(i.getPlayerScore() + 1);
+                saveFile();
                 return;
             }
         }
@@ -41,6 +52,16 @@ public final class HorsieChessScoreboardData {
         scoreboard.add(new PlayerScore(name, 1));
         saveFile();
 
+    }
+
+
+    /**
+     * Sorts the scoreboard in a descending order
+     */
+    public void sortAndReverseScoreboard(){
+        Collections.sort(scoreboard);
+        // must reverse bc we need desc order
+        Collections.reverse(scoreboard);
     }
 
     private void readFile(){
@@ -70,9 +91,6 @@ public final class HorsieChessScoreboardData {
         }
     }
 
-    public List<PlayerScore> getSortedScoreboard(){
-        Collections.sort(scoreboard);
-        return scoreboard;
-    }
+
 
 }

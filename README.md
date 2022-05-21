@@ -1,3 +1,9 @@
-# TODO: a title for your project
+# Horsie Chess
 
-TODO: a detailed description of your project (must contain at least the original description of the assignment)
+We place two horses on a normal chess board.
+Rules are:
+
+- Horses step just like in chess.
+- The player cannot step to a square where the other player has already been.
+- Winner is who steps the last.
+
