@@ -5,6 +5,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import horsie.chess.model.HorsieGameModel;
 import horsie.chess.model.PlayerTurn;
@@ -202,7 +203,7 @@ public class HorsieGameController {
             StackPane square = getSquare(x);
             square.getStyleClass().add("selected");
         }
-        Logger.info("Valid moves disappeared");
+        Logger.debug("Valid moves displayed");
     }
 
 
@@ -214,6 +215,8 @@ public class HorsieGameController {
                 square.getStyleClass().remove("selected");
             }
         }
+        Logger.debug("Valid moves disappeared");
+
     }
 
 
@@ -248,7 +251,7 @@ public class HorsieGameController {
             }
 
         } catch (FileNotFoundException e){
-            Logger.debug("Picture of square has not found");
+            Logger.error("Picture of square has not found");
             throw new FileNotFoundException(e.getMessage());
         }
     }
@@ -263,7 +266,7 @@ public class HorsieGameController {
         Stage gameStage = (Stage) getSquare(new Position(0,0)).getScene().getWindow();
         Parent root = null;
         try {
-            root = FXMLLoader.load(getClass().getResource("/javafx/playerWon.fxml"));
+            root = FXMLLoader.load(Objects.requireNonNull(getClass().getResource("/javafx/playerWon.fxml")));
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

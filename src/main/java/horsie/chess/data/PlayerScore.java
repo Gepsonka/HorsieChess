@@ -5,8 +5,8 @@ import javafx.beans.property.SimpleStringProperty;
 import org.jetbrains.annotations.NotNull;
 
 public class PlayerScore implements Comparable<PlayerScore>{
-    private String playerName;
-    private int playerScore;
+    public String playerName;
+    public int playerScore;
 
 
     public PlayerScore(String playerName, int playerScore){

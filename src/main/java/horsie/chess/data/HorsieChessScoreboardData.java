@@ -19,37 +19,60 @@ import java.util.stream.Collectors;
 
 public final class HorsieChessScoreboardData {
 
-    private final Gson gson = new Gson();
+    private final Gson gson;
 
-    private JsonReader reader;
-
-    Type playerScoreListType = new TypeToken<ArrayList<PlayerScore>>(){}.getType();
     private List<PlayerScore> scoreboard;
 
     public HorsieChessScoreboardData(){
-        try {
-            reader = new JsonReader(new FileReader(getClass().getResource("/scoreboard.json").getFile()));
-        } catch (FileNotFoundException e) {
-            throw new RuntimeException(e);
-        }
+        gson = new Gson();
 
-        scoreboard = gson.fromJson(reader, new TypeToken<ArrayList<PlayerScore>>() {}.getType());
-        Logger.debug("contents of scoreboard: {}", scoreboard.toString());
+        readFile();
     }
 
-    public List<PlayerScore> getSortedScoreboard(){
-        Collections.sort(scoreboard);
-        return scoreboard;
-    }
+
     public void incrementPlayerScore(String name){
         for (var i: scoreboard){
-            if (i.getPlayerName() == name) {
+            if (i.getPlayerName().equals(name)) {
                 i.setPlayerScore(i.getPlayerScore() + 1);
                 return;
             }
         }
 
         scoreboard.add(new PlayerScore(name, 1));
+        saveFile();
+
+    }
+
+    private void readFile(){
+        try {
+            BufferedReader reader = new BufferedReader(new FileReader(Objects.requireNonNull(getClass()
+                    .getResource("/scoreboard.json")).getPath()));
+            scoreboard = gson.fromJson(reader, new TypeToken<ArrayList<PlayerScore>>(){}.getType());
+            Logger.debug("Scoreboard initialized.");
+            reader.close();
+        } catch (IOException e) {
+            Logger.error("Scoreboard reader error: {}", e.toString());
+            e.printStackTrace();
+        }
+    }
+
+    private void saveFile(){
+        try {
+            FileWriter writer = new FileWriter(Objects.requireNonNull(getClass()
+                    .getResource("/scoreboard.json"))
+                    .getPath());
+            gson.toJson(scoreboard, writer);
+            Logger.info("Scoreboard saved.");
+            writer.close();
+        } catch (IOException e) {
+            Logger.error("Scoreboard writer error: {}", e.toString());
+            e.printStackTrace();
+        }
+    }
+
+    public List<PlayerScore> getSortedScoreboard(){
+        Collections.sort(scoreboard);
+        return scoreboard;
     }
 
 }

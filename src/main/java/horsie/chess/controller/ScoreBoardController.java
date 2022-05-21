@@ -22,10 +22,10 @@ public class ScoreBoardController {
     private TableView scoreboardTable;
 
     @FXML
-    TableColumn<PlayerScore, String> playerNameTableColumn;
+    private TableColumn<PlayerScore, String> playerNameTableColumn;
 
     @FXML
-    TableColumn<PlayerScore, Integer> playerScoreTableColumn;
+    private TableColumn<PlayerScore, Integer> playerScoreTableColumn;
 
 
     @FXML
@@ -36,7 +36,8 @@ public class ScoreBoardController {
         var scoreboard = playersScore.getSortedScoreboard();
         Logger.debug("Content of sorted json: {}", scoreboard.toString());
 
-        items = FXCollections.observableArrayList(scoreboard);
+        items = FXCollections.observableArrayList();
+        items.addAll(scoreboard);
 
         playerNameTableColumn.setCellValueFactory(new PropertyValueFactory<PlayerScore, String>("playerName"));
         playerScoreTableColumn.setCellValueFactory(new PropertyValueFactory<PlayerScore, Integer>("playerScore"));

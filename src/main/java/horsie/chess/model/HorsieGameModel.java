@@ -14,7 +14,7 @@ import java.util.Optional;
 
 import org.jetbrains.annotations.Nullable;
 import org.tinylog.Logger;
-import redis.clients.jedis.Jedis;
+
 
 import javax.xml.transform.Result;
 
@@ -187,6 +187,10 @@ public class HorsieGameModel {
         }
     }
 
+    /*
+     * Listener which called after every move to chech if there
+     * are any remaining moves for the player.
+     */
     private void checkPlayerLost(){
         // be careful bc the turn of the players
         // is determined after a move happens
@@ -194,7 +198,7 @@ public class HorsieGameModel {
             case WHITE: // check if white lost
                 if (validMovesOfPiece(whitePosition).isEmpty()){
                     playerWon = PlayerTurn.BLACK;
-                    scoreboard.incrementPlayerScore(cache.getBlackPlayerName());
+                    scoreboard.incrementPlayerScore(cache.getPlayer2());
                     cache.setPlayerWon(PlayerTurn.BLACK);
 
                     Logger.info("Black horse won");
@@ -203,15 +207,12 @@ public class HorsieGameModel {
             case BLACK: // check if black lost
                 if (validMovesOfPiece(blackPosition).isEmpty()){
                     playerWon = PlayerTurn.WHITE;
-                    scoreboard.incrementPlayerScore(cache.getWhitePlayerName());
+                    scoreboard.incrementPlayerScore(cache.getPlayer1());
                     cache.setPlayerWon(PlayerTurn.WHITE);
                     Logger.info("White horse won");
                 }
                 break;
         }
-
-
-
     }
 
 
