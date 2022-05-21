@@ -198,16 +198,16 @@ public class HorsieGameModel {
             case WHITE: // check if white lost
                 if (validMovesOfPiece(whitePosition).isEmpty()){
                     playerWon = PlayerTurn.BLACK;
-                    scoreboard.incrementPlayerScore(cache.getPlayer2());
                     cache.setPlayerWon(PlayerTurn.BLACK);
+                    scoreboard.incrementPlayerScore(cache.getPlayer2());
                     Logger.info("Black horse won");
                 }
                 break;
             case BLACK: // check if black lost
                 if (validMovesOfPiece(blackPosition).isEmpty()){
                     playerWon = PlayerTurn.WHITE;
-                    scoreboard.incrementPlayerScore(cache.getPlayer1());
                     cache.setPlayerWon(PlayerTurn.WHITE);
+                    scoreboard.incrementPlayerScore(cache.getPlayer1());
                     Logger.info("White horse won");
                 }
                 break;
