@@ -1,7 +1,6 @@
 package horsie.chess.controller;
 
 import horsie.chess.data.HorsieChessCacheData;
-import horsie.chess.model.Position;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -26,7 +25,7 @@ public class GameOverSceneController {
     private Button exitButton;
 
     @FXML
-    private void initialize(){
+    private void initialize() {
         gameOverText.setText(cache.getPlayerWon() + " won!");
 
         newGameButton.setOnMouseClicked(e -> newGame());
@@ -35,11 +34,11 @@ public class GameOverSceneController {
 
     }
 
-    private void quitGame(){
+    private void quitGame() {
         System.exit(0);
     }
 
-    private void newGame(){
+    private void newGame() {
         Stage gameStage = (Stage) exitButton.getScene().getWindow();
         Parent root = null;
         try {

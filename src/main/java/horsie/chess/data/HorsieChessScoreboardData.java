@@ -56,7 +56,7 @@ public final class HorsieChessScoreboardData {
 
 
     /**
-     * Sorts the scoreboard in a descending order
+     * Sorts the scoreboard in descending order
      */
     public void sortAndReverseScoreboard(){
         Collections.sort(scoreboard);

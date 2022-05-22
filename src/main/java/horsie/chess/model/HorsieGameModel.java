@@ -18,7 +18,10 @@ import org.tinylog.Logger;
 
 import javax.xml.transform.Result;
 
-
+/**
+ * The whole backend of the ongoing game.
+ * The virtual space where the game happens.
+ */
 public class HorsieGameModel {
 
     private final HorsieChessCacheData cache = new HorsieChessCacheData();
@@ -33,9 +36,9 @@ public class HorsieGameModel {
 
 
     /**
-     * Initialize the starting position of the board.
+     * Initialize the starting {@link Position} of the board.
      * Black and white horses are in the opposite corners of the board.
-     * starting position
+     * starting {@link Position}
      * black: (0, 7)
      * white: (7, 0)
      */
@@ -68,9 +71,9 @@ public class HorsieGameModel {
     }
 
     /**
-     * Initialize the starting position of the board with custom positions
-     * @param whitePiece starting position of white
-     * @param blackPiece starting position af black
+     * Initialize the starting {@link Position} of the board with custom positions
+     * @param whitePiece starting {@link Position} of white
+     * @param blackPiece starting {@link Position} af black
      */
     public HorsieGameModel(Position whitePiece, Position blackPiece){
         currentPlayer=PlayerTurn.WHITE;
@@ -103,7 +106,7 @@ public class HorsieGameModel {
     /**
      *  For testing purposes.
      * @param board board to initialize the game with
-     * @param player which player is next?
+     * @param player which player is next? {@link PlayerTurn}
      * @throws RuntimeException there must be exactly one horse on the board form each color
      */
     public HorsieGameModel(SquareState[][] board, PlayerTurn player) throws RuntimeException{
@@ -142,7 +145,7 @@ public class HorsieGameModel {
     /**
      * Moving one of the pieces on the backend
      * @param positionToMovePiece position, where to move the piece
-     * @return If the move was successful returns the place
+     * @return If the move was successful returns the {@link Position}
      * where the piece was moved to.
      * @throws RuntimeException If one of the player has already won.
      * @throws RuntimeException If the game has not strated yet.
@@ -188,7 +191,7 @@ public class HorsieGameModel {
     }
 
     /*
-     * Listener which called after every move to chech if there
+     * Listener which called after every move to check if there
      * are any remaining moves for the player.
      */
     private void checkPlayerLost(){
@@ -216,8 +219,9 @@ public class HorsieGameModel {
 
 
     /**
-     *
-     * @param moveTo the coordinates of the square where the player wants to move the piece
+     * Checks if the desired move is valid.
+     * Requires for the {@link Position} to override the {@code compareTo()} method
+     * @param moveTo the {@link Position} of the square where the player wants to move the piece
      * @return logical value whether the move is valid or not
      * @throws RuntimeException if the game has not started, yet, we cannot validate moves
      */
@@ -239,31 +243,30 @@ public class HorsieGameModel {
     }
 
     /**
-     *
-     * @param currentPositionOfPiece position  to calculate the valid moves from
-     * @return ArrayList of positions where the piece can be placed
+     * Returns an {@link ArrayList<Position>} with all valid moves for the piece
+     * @param currentPositionOfPiece {@link Position} to calculate the valid moves from
+     * @return ArrayList of {@link Position} where the piece can be placed
      */
     public ArrayList<Position> validMovesOfPiece(Position currentPositionOfPiece){
         var validMovesPositions = new ArrayList<Position>();
         final int[][] moveDirections = {{2, -1}, {2, 1}, {-2, 1}, {-2, -1}, {1, 2}, {-1, 2}, {1, -2}, {-1, -2}};
-        for (int i = 0; i < moveDirections.length; i++){
-            if (!areIndexesOnTheTable(moveDirections[i][0] + currentPositionOfPiece.getX(),
-                    currentPositionOfPiece.getY() + moveDirections[i][1])) {
+        for (int[] moveDirection : moveDirections) {
+            if (!areIndexesOnTheTable(moveDirection[0] + currentPositionOfPiece.getX(),
+                    currentPositionOfPiece.getY() + moveDirection[1])) {
                 continue;
             }
 
-            if (board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
-                    + moveDirections[i][1]]
+            if (board[moveDirection[0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
+                    + moveDirection[1]]
                     != SquareState.BLACK_HORSE
-                    && board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
-                    + moveDirections[i][1]]
+                    && board[moveDirection[0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
+                    + moveDirection[1]]
                     != SquareState.WHITE_HORSE
-                    && board[moveDirections[i][0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
-                    + moveDirections[i][1]]
-                    != SquareState.FORBIDDEN)
-            {
-                validMovesPositions.add(new Position(moveDirections[i][0] + currentPositionOfPiece.getX(),
-                        moveDirections[i][1] + currentPositionOfPiece.getY()));
+                    && board[moveDirection[0] + currentPositionOfPiece.getX()][currentPositionOfPiece.getY()
+                    + moveDirection[1]]
+                    != SquareState.FORBIDDEN) {
+                validMovesPositions.add(new Position(moveDirection[0] + currentPositionOfPiece.getX(),
+                        moveDirection[1] + currentPositionOfPiece.getY()));
             }
         }
 

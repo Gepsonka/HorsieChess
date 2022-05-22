@@ -1,7 +1,11 @@
 package horsie.chess.model;
 
-import java.util.Objects;
 
+/**
+ * Represents a virtual square on the table.
+ * It overrides the {@code equals()} because later we want to check if a
+ * List<Position> contains a specific position
+ */
 public class Position {
     private int x;
     private int y;
@@ -24,6 +28,12 @@ public class Position {
     public String toString(){
         return "[x: " + getX() + ", y: " + getY() + "]";
     }
+
+    /**
+     * Needs to implement bc of the contains() function
+     * @param o object to compare to
+     * @return
+     */
     @Override
     public boolean equals(Object o){
         if (!(o instanceof Position)){

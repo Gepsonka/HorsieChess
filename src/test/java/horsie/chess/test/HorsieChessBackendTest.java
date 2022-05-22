@@ -34,6 +34,9 @@ public class HorsieChessBackendTest {
         return Stream.of(new Position(), new Position(2, 5), new Position(1, 7));
     }
 
+    /*
+    Initialize a board from the three files and test for those.
+     */
     private Stream<SquareState[][]> boardSupplier() throws FileNotFoundException {
         ArrayList<SquareState[][]> boards = new ArrayList<>();
 

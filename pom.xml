@@ -9,7 +9,7 @@
     <description>
         Game played on an normal chess board with 2 horses.
         The rules are the following:
-            - A horse cannot step to aplace where one of the horses has already been.
+            - A horse cannot step to a place where one of the horses has already been.
             - If a player is out of moves he is lost.
             - Horse step pattern is the same as in normal chess.
     </description>

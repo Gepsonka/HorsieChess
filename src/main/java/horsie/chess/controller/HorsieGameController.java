@@ -28,8 +28,10 @@ public class HorsieGameController {
 
     private final HorsieGameModel gameModel = new HorsieGameModel();
 
-    // helps calculate valid moves compared
-    // to a specific position
+    /**
+     * There are the matematical vectors which
+     * shows us the squares to highlight
+     */
     private final int[][] moveDirections = {{2, -1}, {2, 1}, {-2, 1}, {-2, -1}, {1, 2}, {-1, 2}, {1, -2}, {-1, -2}};
 
     private boolean showValidMoves = false;
@@ -60,15 +62,15 @@ public class HorsieGameController {
      * PLace the pieces on the board
      * @throws FileNotFoundException
      */
-    public void placePieces() throws FileNotFoundException {
+    private void placePieces() throws FileNotFoundException {
 
         var board = gameModel.getBoard();
 
-        for (int i = 0; i < 8; i++){
-            for (int j = 0; j < 8; j++){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 StackPane square = getSquare(new Position(i, j));
 
-                switch (board[i][j]){
+                switch (board[i][j]) {
                     case BLACK_HORSE -> square.setBackground(new Background(new BackgroundImage(
                             getPieceImages(SquareState.BLACK_HORSE),
                             BackgroundRepeat.NO_REPEAT,
@@ -110,23 +112,23 @@ public class HorsieGameController {
         SquareState boardSquare = gameModel.getBoard()[position.getX()][position.getY()];
         switch (boardSquare) {
             case WHITE_HORSE -> {
-                if (gameModel.getCurrentPlayer() == PlayerTurn.WHITE){
+                if (gameModel.getCurrentPlayer() == PlayerTurn.WHITE) {
                     displayValidMovesVisibility();
                     Logger.debug("Valid moves: {}", gameModel.validMovesOfPiece(position).toString());
                 }
             }
             case BLACK_HORSE -> {
-                if (gameModel.getCurrentPlayer() == PlayerTurn.BLACK){
+                if (gameModel.getCurrentPlayer() == PlayerTurn.BLACK) {
                     displayValidMovesVisibility();
                     Logger.debug("Valid moves: {}", gameModel.validMovesOfPiece(position).toString());
                 }
             }
             case EMPTY, FORBIDDEN -> {
-                if (showValidMoves){
-                    if (gameModel.isValidMove(position)){
+                if (showValidMoves) {
+                    if (gameModel.isValidMove(position)) {
                         undisplayValidMovesVisibility();
                         stepWithPiece(position);
-                        if (gameIsFinished()){
+                        if (gameIsFinished()) {
                             switchToGameOverScene();
                         }
                     } else {
@@ -139,7 +141,7 @@ public class HorsieGameController {
 
 
     private void stepWithPiece(Position moveToPosition) throws FileNotFoundException {
-        if (gameModel.isValidMove(moveToPosition)){
+        if (gameModel.isValidMove(moveToPosition)) {
             Position pieceCurrentPoz;
             StackPane pieceCurrentSquare;
             StackPane moveToSquare = getSquare(moveToPosition);
@@ -182,6 +184,7 @@ public class HorsieGameController {
                     BackgroundSize.DEFAULT)));
 
             gameModel.movePiece(moveToPosition);
+            Logger.debug("Step happened on the front-end");
         }
     }
 
@@ -193,13 +196,13 @@ public class HorsieGameController {
     private void displayValidMovesVisibility(){
         showValidMoves = true;
         ArrayList<Position> validPositions = new ArrayList<>();
-        switch (gameModel.getCurrentPlayer()){
+        switch (gameModel.getCurrentPlayer()) {
             case WHITE -> validPositions = gameModel.validMovesOfPiece(gameModel.getWhitePosition());
             case BLACK -> validPositions = gameModel.validMovesOfPiece(gameModel.getBlackPosition());
             default -> {}
         }
 
-        for (var x : validPositions){
+        for (var x : validPositions) {
             StackPane square = getSquare(x);
             square.getStyleClass().add("selected");
         }
@@ -209,8 +212,8 @@ public class HorsieGameController {
 
     private void undisplayValidMovesVisibility(){
         showValidMoves = false;
-        for (int i = 0; i < 8; i++){
-            for (int j = 0; j < 8; j++){
+        for (int i = 0; i < 8; i++) {
+            for (int j = 0; j < 8; j++) {
                 StackPane square = getSquare(new Position(i, j));
                 square.getStyleClass().remove("selected");
             }
@@ -250,7 +253,7 @@ public class HorsieGameController {
                 }
             }
 
-        } catch (FileNotFoundException e){
+        } catch (FileNotFoundException e) {
             Logger.error("Picture of square has not found");
             throw new FileNotFoundException(e.getMessage());
         }
