@@ -11,6 +11,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
+import org.tinylog.Logger;
 
 import java.io.IOException;
 import java.nio.file.Paths;
@@ -88,6 +89,7 @@ public class NewGameController {
         catch (IOException e) {
             e.printStackTrace();
         }
+        Logger.debug("Scoreboard has been shown");
     }
 
     private void noPlayerNameError(){
@@ -96,6 +98,8 @@ public class NewGameController {
         alert.setHeaderText("No player name!");
         alert.setContentText("Both players must have a name!");
         alert.showAndWait();
+        Logger.error("One of the player's TextField is empty");
+
     }
 
     private void playerNamesAreTheSame(){
@@ -104,8 +108,6 @@ public class NewGameController {
         alert.setHeaderText("Player name");
         alert.setContentText("Player names must not be the same");
         alert.showAndWait();
+        Logger.error("Players got the same name!");
     }
 }
-
-// TODO: connet to redis in func
-// TODO: Create Connector class connecting the app and the database

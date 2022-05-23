@@ -54,12 +54,16 @@ public final class HorsieChessScoreboardData {
             if (i.getPlayerName().equals(name)) {
                 i.setPlayerScore(i.getPlayerScore() + 1);
                 saveFile();
+                Logger.info("{}'s score has been incremented by 1", name);
+
                 return;
             }
         }
 
         scoreboard.add(new PlayerScore(name, 1));
         saveFile();
+        Logger.info("{}'s got put into the scoreboard with the score of 1.", name);
+
 
     }
 
@@ -85,6 +89,7 @@ public final class HorsieChessScoreboardData {
             Logger.error("Scoreboard reader error: {}", e.toString());
             e.printStackTrace();
         }
+        Logger.debug("scoreboard.json has been loaded into the memory.");
     }
 
     private void saveFile(){
@@ -99,6 +104,9 @@ public final class HorsieChessScoreboardData {
             Logger.error("Scoreboard writer error: {}", e.toString());
             e.printStackTrace();
         }
+
+        Logger.debug("scoreboard.json has been saved.");
+
     }
 
 }
