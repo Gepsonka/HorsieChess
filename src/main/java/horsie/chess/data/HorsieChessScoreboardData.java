@@ -17,6 +17,11 @@ import java.nio.file.StandardOpenOption;
 import java.util.*;
 import java.util.stream.Collectors;
 
+/**
+ * Stores player history of winning game.
+ * After each win a player's score gets incremented
+ * Stored in scoreboard.json
+ */
 public final class HorsieChessScoreboardData {
 
     private final Gson gson;
@@ -30,15 +35,19 @@ public final class HorsieChessScoreboardData {
     }
 
 
+    /**
+     * Returns the sorted scoreboard.
+     * @return {@link List<PlayerScore>} List of players on the scoreboard
+     */
     public List<PlayerScore> getSortedScoreboard(){
         sortAndReverseScoreboard();
         return scoreboard;
     }
 
     /**
-     * If the player is already has a score increment that score
+     * If the player is already has a score, increment that score
      * else add the player to the scoreboard with the value of 1
-     * @param name The player's name
+     * @param name The player's name. {@code PlayerScore.getPlayerName()}
      */
     public void incrementPlayerScore(String name){
         for (var i: scoreboard){
@@ -63,6 +72,7 @@ public final class HorsieChessScoreboardData {
         // must reverse bc we need desc order
         Collections.reverse(scoreboard);
     }
+
 
     private void readFile(){
         try {
@@ -90,7 +100,5 @@ public final class HorsieChessScoreboardData {
             e.printStackTrace();
         }
     }
-
-
 
 }

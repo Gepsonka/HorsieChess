@@ -23,8 +23,6 @@ public class HorsieChessCacheData {
         readFile();
     }
 
-
-
     /**
      * Set player name int the cache object
      * @param player1 white side
@@ -58,6 +56,10 @@ public class HorsieChessCacheData {
         return cache.getPlayerWon();
     }
 
+    /**
+     * Sets the name of the winner in the game cache
+     * @param winnerPlayer {@link PlayerTurn} enum instance
+     */
     public void setPlayerWon(PlayerTurn winnerPlayer){
         switch (winnerPlayer){
             case WHITE -> cache.setPlayerWon(cache.getPlayer1());
