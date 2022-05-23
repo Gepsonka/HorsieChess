@@ -1,114 +1,146 @@
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Horsie chess backend initialized
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: White position: x: 0, y: 7
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Black position: x: 7, y: 0
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.movePiece()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.movePiece()
 DEBUG: WHITE has moved to position: [x: 1, y: 5]
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Horsie chess backend initialized
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: White position: x: 0, y: 7
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Black position: x: 7, y: 0
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Horsie chess backend initialized
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: White position: x: 0, y: 7
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Black position: x: 7, y: 0
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.movePiece()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.movePiece()
 DEBUG: WHITE has moved to position: [x: 1, y: 5]
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.saveFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.saveFile()
 INFO: Cache saved.
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.setPlayerWon()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.setPlayerWon()
 INFO: Player set in the cache. x
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
 INFO: Scoreboard saved.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.checkPlayerLost()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
+DEBUG: scoreboard.json has been saved.
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.incrementPlayerScore()
+INFO: x's got put into the scoreboard with the score of 1.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.checkPlayerLost()
 INFO: White horse won
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Horsie chess backend initialized
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: White position: x: 0, y: 7
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Black position: x: 7, y: 0
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.movePiece()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.movePiece()
 DEBUG: WHITE has moved to position: [x: 1, y: 5]
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.saveFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.saveFile()
 INFO: Cache saved.
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.setPlayerWon()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.setPlayerWon()
 INFO: Player set in the cache. x
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
 INFO: Scoreboard saved.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.checkPlayerLost()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
+DEBUG: scoreboard.json has been saved.
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.incrementPlayerScore()
+INFO: x's score has been incremented by 1
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.checkPlayerLost()
 INFO: White horse won
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Horsie chess backend initialized
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: White position: x: 0, y: 7
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Black position: x: 7, y: 0
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.movePiece()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.movePiece()
 DEBUG: WHITE has moved to position: [x: 1, y: 5]
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.saveFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.saveFile()
 INFO: Cache saved.
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.setPlayerWon()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.setPlayerWon()
 INFO: Player set in the cache. x
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
 INFO: Scoreboard saved.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.checkPlayerLost()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.saveFile()
+DEBUG: scoreboard.json has been saved.
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.incrementPlayerScore()
+INFO: x's score has been incremented by 1
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.checkPlayerLost()
 INFO: White horse won
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Horsie chess backend initialized
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: White position: x: 0, y: 7
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Black position: x: 7, y: 0
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessCacheData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessCacheData.readFile()
 INFO: Cache initialized: [x, y] 
-2022-05-23 09:56:32 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
 DEBUG: Scoreboard initialized.
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.data.HorsieChessScoreboardData.readFile()
+DEBUG: scoreboard.json has been loaded into the memory.
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Horsie chess backend initialized
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: White position: x: 0, y: 7
-2022-05-23 09:56:32 [main] horsie.chess.model.HorsieGameModel.<init>()
+2022-05-23 10:56:08 [main] horsie.chess.model.HorsieGameModel.<init>()
 DEBUG: Black position: x: 7, y: 0

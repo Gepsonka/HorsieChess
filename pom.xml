@@ -5,9 +5,9 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>hu.unideb.inf</groupId>
     <artifactId>horsie-chess</artifactId>
-    <version>1.0</version>
+    <version>1.0.0-RELEASE</version>
     <description>
-        Game played on an normal chess board with 2 horses.
+        Game played on a normal chess board with 2 horses.
         The rules are the following:
             - A horse cannot step to a place where one of the horses has already been.
             - If a player is out of moves he is lost.
